@@ -38,6 +38,9 @@ def preprocess_stopwords(text, stopwords):
 
     # Tokenization
     tokens = word_tokenize(modified_text, language = "french")
+
+    # Remove single caracter
+    tokens = [token for token in tokens if len(token) > 1]
     
     # Remove defined stopwords
     tokens = [token for token in tokens if token not in stopwords]
@@ -61,12 +64,12 @@ def preprocess_text(text, stopwords):
 
     # Tokenization
     tokens = word_tokenize(modified_text, language = "french")
-    
-    # Remove defined stopwords
-    tokens = [token for token in tokens if token not in stopwords]
 
     # Remove single caracter
     tokens = [token for token in tokens if len(token) > 1]
+    
+    # Remove defined stopwords
+    tokens = [token for token in tokens if token not in stopwords]
 
     # Lemmatisation ou racinisation
     # stemmer = SnowballStemmer('french')
